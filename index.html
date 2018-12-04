@@ -1,49 +1,423 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>Take flight with a PWA</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/sky.css" />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/custom-styles.css" />
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css" />
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="bg-container"></div>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+      <div class="slides">
+        <section
+          data-state="title-bg no-footer"
+          class="title-slide"
+          data-transition="fade"
+        >
+          <br /><br /><br /><br />
+          <img src="img/pwa-logo.png" alt="" class="logo" />
+          <h2>Take flight with a PWA</h2>
+          <p>
+            by <a href="http://cvuorinen.net">Carl Vuorinen</a> /
+            <a href="http://twitter.com/cvuorinen">@cvuorinen</a>
+          </p>
+          <img class="fragment slide-in" id="vr-man" src="img/vr.png" />
+          <img class="fragment slide-in" id="drone1" src="img/drone1.png" />
+          <img class="fragment slide-in" id="drone2" src="img/drone2.png" />
+          <div class="fragment">
+            <img id="laser1" src="img/laser.png" />
+            <img id="laser2" src="img/laser.png" />
+          </div>
+          <div class="fragment">
+            <img id="fire" src="img/fire.png" />
+            <img id="explosion" src="img/explosion.png" />
+          </div>
+        </section>
+
+        <section
+          data-state="theme-dark no-footer"
+          data-background="img/cdl-image.png"
+          data-transition="fade"
+        >
+          <div style="width:600px; margin: 0 auto;">
+            <a href="https://citydevlabs.fi" target="_blank">
+              <img
+                src="img/cdl-logo.png"
+                alt=""
+                class="pull-left"
+                style="width:200px;margin-top:40px;"
+              />
+            </a>
+            <div style="text-align:left;float:right;margin-top:30px;">
+              <h4>Carl Vuorinen</h4>
+              <h5>
+                <i class="fab fa-lg fa-twitter" style="width:1.5em;"></i>
+                <a href="http://twitter.com/cvuorinen" target="_blank"
+                  >@cvuorinen</a
+                >
+              </h5>
+              <h5>
+                <i class="fab fa-lg fa-github" style="width:1.5em;"></i>
+                <a href="https://github.com/cvuorinen" target="_blank"
+                  >cvuorinen</a
+                >
+              </h5>
+              <h5>
+                <i class="fas fa-lg fa-rss" style="width:1.5em;"></i>
+                <a href="http://cvuorinen.net" target="_blank">cvuorinen.net</a>
+              </h5>
+            </div>
+            <div style="clear: both;"></div>
+            <br />
+            <p>
+              <a href="https://citydevlabs.fi/rekry" target="_blank"
+                >citydevlabs.fi/rekry</a
+              >
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>WHAT?</h2>
+          <br /><br />
+          <em>
+            <i class="fa fa-lg fa-mobile-alt margin fragment"></i>
+            <i class="fa fa-lg fa-sync margin fragment"></i>
+            <i class="fa fa-lg fa-magic margin fragment"></i>
+            <i class="fab fa-lg fa-bluetooth margin fragment"></i>
+            <i class="fa fa-lg fa-helicopter margin fragment"></i>
+          </em>
+        </section>
+
+        <section>
+          <h4>
+            Control drone with <em>Bluetooth</em> Web API<br />
+            Taking input from <strong>Device Orientation</strong> API
+          </h4>
+          <br />
+          <ul class="dashed">
+            <li>Using RxJS to map input to output</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>But, WHY?</h2>
+          <img
+            class="fragment slide-in"
+            style="height: 300px;"
+            src="img/controller.gif"
+          />
+        </section>
+
+        <section>
+          <h4>
+            <em>Goal:</em> Controller that <strong>anyone</strong> could
+            <br />just pick up and <em>start flying</em><br />(without any prior
+            experience)
+          </h4>
+        </section>
+
+        <section>
+          <h3>Parrot Mini Drones</h3>
+          <br />
+          <img style="height: 200px;" src="img/drone2.png" />
+          <div>
+            <a href="https://www.parrot.com/drones">parrot.com/drones</a>
+          </div>
+        </section>
+
+        <section>
+          <h3>Disclaimer</h3>
+          <p>
+            THE PRESENTER SHALL NOT BE LIABLE FOR ANY CUT FINGERS, LOST DRONES,
+            BROKEN WINDOWS, OR ANY OTHER INCIDENTAL, INDIRECT, PUNITIVE, SPECIAL
+            OR CONSEQUENTIAL DAMAGES WHATSOEVER ARISING OUT OF USAGE OF THESE
+            CODE EXAMPLES OR THE PROGRESSIVE WEB APP WITHOUT PROPER SUPERVISION,
+            EVEN IF THE PRESENTER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+            DAMAGES.
+          </p>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <div class="fragment">
+            Usages <br /><br />
+            <em class="warning"
+              ><i class="fa fa-lg fa-lightbulb margin"></i
+            ></em>
+            <strong> <i class="fa fa-lg fa-robot margin"></i> </strong>
+            <em class="error">
+              <i class="fa fa-lg fa-heartbeat margin"></i>
+            </em>
+            <em class="success">
+              <i class="fa fa-lg fa-battery-half margin"></i>
+            </em>
+            <em> <i class="fa fa-lg fa-brain margin"></i> </em>
+            <i class="fa fa-lg fa-headphones-alt margin"></i>
+          </div>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em><i class="fab fa-bluetooth"></i></em>
+          </h3>
+          <br />
+          <div class="fragment">
+            Browser support:<br />
+            <em class="success">
+              <i class="fab fa-lg fa-chrome margin"></i>
+              <i class="fab fa-lg fa-opera margin"></i>
+              <i class="fab fa-lg fa-android margin"></i>
+            </em>
+            <em class="error">
+              <i class="fab fa-lg fa-safari margin"></i>
+              <i class="fab fa-lg fa-firefox margin"></i>
+              <i class="fab fa-lg fa-edge margin"></i>
+              <i class="fab fa-lg fa-internet-explorer margin"></i>
+            </em>
+            <br /><br />
+            <a href="https://caniuse.com/web-bluetooth"
+              >caniuse.com/web-bluetooth</a
+            >
+          </div>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <pre class="prettyprint"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+  .then(device => { /* ... */ })
+  .catch(error => { console.log(error) })</code></pre>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <p>TODO: image here</p>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+  <span class="focus">.then(device => device.gatt.connect())
+  .then(server => { /* ... */ })</span>
+  .catch(error => { console.log(error) })</code></pre>
+          <br />
+          <small
+            >The Generic Attributes (GATT) define a hierarchical data structure
+            <br />
+            that is exposed to connected Bluetooth Low Energy (LE)
+            devices.</small
+          >
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+  .then(device => device.gatt.connect())
+  <span class="focus">.then(server => server.getPrimaryService('battery_service'))
+  .then(service => { /* ... */ })</span>
+  .catch(error => { console.log(error) })</code></pre>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+  .then(device => device.gatt.connect())
+  .then(server => server.getPrimaryService('battery_service'))
+  <span class="focus">.then(service => service.getCharacteristic('battery_level'))
+  .then(characteristic => { /* ... */ })</span>
+  .catch(error => { console.log(error) })</code></pre>
+          <small class="fragment">Are we there yet?</small>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+  .then(device => device.gatt.connect())
+  .then(server => server.getPrimaryService('battery_service'))
+  .then(service => service.getCharacteristic('battery_level'))
+  <span class="focus">.then(characteristic => characteristic.readValue())
+  .then(value => { /* ... */ })</span>
+  .catch(error => { console.log(error) })</code></pre>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+  .then(device => device.gatt.connect())
+  .then(server => server.getPrimaryService('battery_service'))
+  .then(service => service.getCharacteristic('battery_level'))
+  .then(characteristic => characteristic.readValue())
+  <span class="focus">.then(value => {
+    console.log('Battery percentage is ' + value.getUint8(0))
+  })</span>
+  .catch(error => { console.log(error) })</code></pre>
+          <small>value comes in a DataView object (binary ArrayBuffer)</small>
+        </section>
+
+        <section class="bluetooth">
+          <h3>
+            Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
+          </h3>
+          <br />
+          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+  .then(device => device.gatt.connect())
+  .then(server => server.getPrimaryService('heart_rate'))
+  .then(service => service.getCharacteristic('heart_rate_control_point'))
+  <span class="focus">.then(characteristic => characteristic.writeValue(Uint8Array.of(1)))
+  .then(_ => {
+    console.log('Value has been written.')
+  })</span>
+  .catch(error => { console.log(error) })</code></pre>
+          <small>value comes in a DataView object (binary ArrayBuffer)</small>
+        </section>
+
+        <section>
+          <h3>Web Bluetooth Security</h3>
+          <br />
+          <ul class="dashed">
+            <li>HTTPS only</li>
+            <!-- prettier-ignore -->
+            <li>User Gesture Required
+              <br /> (touch/mouse click)
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Parrot Bluetooth API</h3>
+
+          <pre class="prettyprint"><code data-trim class="language-javascript">write('fa00', 'fa0b', [4, ++fa0b, 0, 4, 1, 0, 0x32, 0x30,
+  0x31, 0x34, 0x2D, 0x31, 0x30, 0x2D, 0x32, 0x38, 0x00]);</code></pre>
+          <small>???</small>
+        </section>
+
+        <section><h3>Device orientation API</h3>
+          <p>TODO</p>
+        </section>
+
+        <section><h3>DEMO</h3></section>
+
+        <section data-state="ending-bg no-footer" class="ending-slide left">
+          <h1>THE END</h1>
+          <br />
+          <h2>Questions?</h2>
+          <br />
+          <h5>
+            <i class="fab fa-lg fa-twitter" style="width:1.5em;"></i>
+            <a href="http://twitter.com/cvuorinen" target="_blank"
+              >@cvuorinen</a
+            >
+          </h5>
+        </section>
+
+        <section>
+          <h2>Links</h2>
+          <ul class="dashed">
+            <li>
+              <a href="https://drone.cvuorinen.net/">drone.cvuorinen.net</a>
+            </li>
+            <li>
+              <a href="https://github.com/cvuorinen/drone-gesture-controller"
+                >github.com/cvuorinen/drone-gesture-controller</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://medium.com/@jyasskin/the-web-bluetooth-security-model-666b4e7eed2"
+                >The Web Bluetooth Security Model</a
+              >
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="footer">
+        Take flight with a PWA at
+        <a href="https://meetabit.com/communities/helsinkijs">HelsinkiJS</a>
+        December 2018 by <a href="http://twitter.com/cvuorinen">@cvuorinen</a>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script src="lib/js/run_prettify.js"></script>
+    <script src="lib/js/jquery.min.js"></script>
+
+    <script src="js/custom-scripts.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        //controls: false,
+        controlsTutorial: false,
+        history: true,
+        keyboard: { 13: "next" }, // go to the next slide when the ENTER key is pressed
+
+        dependencies: [
+          //{ src: "plugin/markdown/marked.js" },
+          //{ src: "plugin/markdown/markdown.js" },
+          //{ src: "plugin/notes/notes.js", async: true },
+          /*{
+            src: "plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }*/
+        ]
+      });
+    </script>
+  </body>
 </html>
