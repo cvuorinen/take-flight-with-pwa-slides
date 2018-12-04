@@ -102,7 +102,7 @@
           </div>
         </section>
 
-        <section>
+        <section data-transition="slide">
           <h2>WHAT?</h2>
           <br /><br />
           <em>
@@ -125,7 +125,7 @@
           </ul>
         </section>
 
-        <section>
+        <section data-transition="slide">
           <h2>But, WHY?</h2>
           <img
             class="fragment slide-in"
@@ -142,7 +142,7 @@
           </h4>
         </section>
 
-        <section>
+        <section data-transition="slide">
           <h3>Parrot Mini Drones</h3>
           <br />
           <img style="height: 200px;" src="img/drone2.png" />
@@ -151,7 +151,7 @@
           </div>
         </section>
 
-        <section>
+        <section data-transition="slide">
           <h3>Disclaimer</h3>
           <p>
             THE PRESENTER SHALL NOT BE LIABLE FOR ANY CUT FINGERS, LOST DRONES,
@@ -190,7 +190,7 @@
             Web Bluetooth API <em><i class="fab fa-bluetooth"></i></em>
           </h3>
           <br />
-          <div class="fragment">
+          <div>
             Browser support:<br />
             <em class="success">
               <i class="fab fa-lg fa-chrome margin"></i>
@@ -215,7 +215,9 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <pre class="prettyprint"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+          <pre
+            class="prettyprint"
+          ><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
   .then(device => { /* ... */ })
   .catch(error => { console.log(error) })</code></pre>
         </section>
@@ -225,7 +227,7 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <p>TODO: image here</p>
+          <img src="img/bluetooth-dialog.png" style="height:300px;" />
         </section>
 
         <section class="bluetooth">
@@ -233,7 +235,9 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+          <pre
+            class="prettyprint focused"
+          ><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
   <span class="focus">.then(device => device.gatt.connect())
   .then(server => { /* ... */ })</span>
   .catch(error => { console.log(error) })</code></pre>
@@ -251,7 +255,9 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+          <pre
+            class="prettyprint focused"
+          ><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
   .then(device => device.gatt.connect())
   <span class="focus">.then(server => server.getPrimaryService('battery_service'))
   .then(service => { /* ... */ })</span>
@@ -263,7 +269,9 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+          <pre
+            class="prettyprint focused"
+          ><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
   .then(device => device.gatt.connect())
   .then(server => server.getPrimaryService('battery_service'))
   <span class="focus">.then(service => service.getCharacteristic('battery_level'))
@@ -277,7 +285,9 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+          <pre
+            class="prettyprint focused"
+          ><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
   .then(device => device.gatt.connect())
   .then(server => server.getPrimaryService('battery_service'))
   .then(service => service.getCharacteristic('battery_level'))
@@ -291,7 +301,9 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+          <pre
+            class="prettyprint focused"
+          ><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
   .then(device => device.gatt.connect())
   .then(server => server.getPrimaryService('battery_service'))
   .then(service => service.getCharacteristic('battery_level'))
@@ -308,7 +320,9 @@
             Web Bluetooth API <em> <i class="fab fa-bluetooth"></i> </em>
           </h3>
           <br />
-          <pre class="prettyprint focused"><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
+          <pre
+            class="prettyprint focused"
+          ><code data-trim class="language-javascript">navigator.bluetooth.requestDevice(options)
   .then(device => device.gatt.connect())
   .then(server => server.getPrimaryService('heart_rate'))
   .then(service => service.getCharacteristic('heart_rate_control_point'))
@@ -332,16 +346,19 @@
           </ul>
         </section>
 
-        <section>
+        <section data-transition="slide">
           <h3>Parrot Bluetooth API</h3>
 
-          <pre class="prettyprint"><code data-trim class="language-javascript">write('fa00', 'fa0b', [4, ++fa0b, 0, 4, 1, 0, 0x32, 0x30,
+          <pre
+            class="prettyprint"
+          ><code data-trim class="language-javascript">write('fa00', 'fa0b', [4, ++fa0b, 0, 4, 1, 0, 0x32, 0x30,
   0x31, 0x34, 0x2D, 0x31, 0x30, 0x2D, 0x32, 0x38, 0x00]);</code></pre>
           <small>???</small>
         </section>
 
-        <section><h3>Device orientation API</h3>
-          <p>TODO</p>
+        <section data-transition="slide">
+          <h3>Device Orientation API</h3>
+          <img src="img/device-orientation.png" />
         </section>
 
         <section><h3>DEMO</h3></section>
@@ -372,8 +389,20 @@
             </li>
             <li>
               <a
+                href="https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web"
+                >Interact with Bluetooth devices on the Web</a
+              >
+            </li>
+            <li>
+              <a
                 href="https://medium.com/@jyasskin/the-web-bluetooth-security-model-666b4e7eed2"
                 >The Web Bluetooth Security Model</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://developers.google.com/web/fundamentals/native-hardware/device-orientation/"
+                >Device Orientation & Motion</a
               >
             </li>
           </ul>
@@ -402,6 +431,7 @@
       Reveal.initialize({
         //controls: false,
         controlsTutorial: false,
+        transition: "fade",
         history: true,
         keyboard: { 13: "next" }, // go to the next slide when the ENTER key is pressed
 
